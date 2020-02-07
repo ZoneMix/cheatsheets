@@ -1,7 +1,7 @@
 ---
-title: Bash
-created: '2020-02-07T04:41:46.455Z'
-modified: '2020-02-07T07:17:07.127Z'
+Title: Bash
+Created: '2020-02-07T04:41:46.455Z'
+Modified: '2020-02-07T07:17:07.127Z'
 ---
 
 # Bash
