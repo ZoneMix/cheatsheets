@@ -85,50 +85,44 @@ passwd                    | Change user password
 ```
 
 ### Keyboard Shorcuts
+#### CTRL+ Commands
+Key       | Description
+--------- | -----------
+C         | kill
+L         | clear screen
+D         | logout
+Z         | suspend current foreground process return using fg 'process number'
+S         | stop output to screen
+Q         | resume output
+A or Home | go beginning of line
+E or End  | go end of line
+B         | go back one character
+F         | go forward one character
+K         | cuts everything forward of cursor to clipboard
+XX        | move between beginning of line and the current positions
+D         | delete charcter under cursor
+U         | delete everything behind cursor
+Y         | paste last thing yanked
+_         | undo last key press
+W         | cut word before cursor
+P         | prev command
+N         | next command
+R         | recall last command with characters provided
+O         | Run command you found with R
+G         | leave R
 
-<details close>
-  <summary>CTRL+ Commands</summary>
-  <markdown>
-* C (kill)
-* L (clear screen)
-* D (logout)
-* Z (suspend current foreground process)
-  * return using fg 'process number'
-* S (stop output to screen)
-* Q (resume output)
-* A or Home (go beginning of line)
-* E or End (go end of line)
-* B (go back one character)
-* F (go forward one character)
-* K (cuts everything forward of cursor to clipboard)
-* XX (move between beginning of line and the current positions)
-* D (delete charcter under cursor)
-* U (delete everything behind cursor)
-* Y (paste last thing yanked)
-* _ (undo last key press)
-* W (cut word before cursor)
-* P (prev command)
-* N (next command)
-* R (recall last command with characters provided)
-* O (Run command you found with R)
-* G (leave R)
-  </markdown>
-</details>
-
-<details close>
-  <summary>ALT+ Commands</summary>
-  <markdown>
-* B (back one word)
-* F (forward one word)
-* D (delete word after cursor)
-* H (delete charcter before cursor)
-* T (swap current word with prev word)
-* U (capitalize word after cursor)
-* L (lowercase word after cursor)
-* C (capitalize character on cursor)
-* R (revert changes from command if pulled from history)
-  </markdown>
-</details>
+#### ALT+ Commands
+Key | Description
+--- | -----------
+B   | back one word
+F   | forward one word
+D   | delete word after cursor
+H   | delete charcter before cursor
+T   | swap current word with prev word
+U   | capitalize word after cursor
+L   | lowercase word after cursor
+C   | capitalize character on cursor
+R   | revert changes from command if pulled from history
 
 ***
 <br/>
@@ -144,21 +138,21 @@ passwd                    | Change user password
   * Make the variable available to sub-processes
     * export NAME=value
   
-* #### If/Else
-  * if [condition]; then ... ; fi
-  * if [condition]; then ... ; else ... ; fi
+#### If/Else
+* if [condition]; then ... ; fi
+* if [condition]; then ... ; else ... ; fi
   <br/>
-  * **Conditions**
-    * if [ a -eq b]; then ...
-    * if [ a -ne b]; then ...
-    * if [ a -lt b]; then ...
-    * if [ a -gt b]; then ...
-    * if [ a -le b]; then ...
-    * if [ a -ge b]; then ...
+* Conditions
+  * if [ a -eq b]; then ...
+  * if [ a -ne b]; then ...
+  * if [ a -lt b]; then ...
+  * if [ a -gt b]; then ...
+  * if [ a -le b]; then ...
+  * if [ a -ge b]; then ...
 <br/>
-* #### Loops
+#### Loops
  * 
-* #### Command Substitution
+#### Command Substitution
 
 
 
