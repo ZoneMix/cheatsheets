@@ -15,43 +15,73 @@ Modified: '2020-02-07T07:17:07.127Z'
 <br/>
 
 ## Basic Linux Commands
-Command                   | Description 
--------                   | -----------
-pwd                       | Prints current path 
-ls                        | Lists directory contents 
-cd                        | Changes directory 
-cat [file]                | Prints contents of [file] 
-cp [file] [file]          | Copy  ***works with directories*** 
-mv [file] [file]          | Move ***works with directories*** 
-rm [file]                 | Remove ***-r to remove directory*** 
-mkdir [dirname]           | Makes new directory 
-rmdir [dirname]           | Removes directory ***-r for directory with contents*** 
-touch [filename]          | Creates new file 
-ln [source] [destination] | Creates a shortcut 
-su [user]                 | Switch user   
-sudo [command]            | Run with root privileges 
-logout or exit            | Logout or exit shell 
-head [filename]           | Prints first 10 lines of file by default 
-tail [filename]           | Prints last 10 lines of file by default 
-chmod                     | Can change permissions in filesystem ***see options with man chmod***
-who                       | Shows users logged on 
-md5sum [filename]         | Prints the md5 hash of a file 
-find [path] [expression]  | Search for files matching a provided pattern 
-df                        | Display used and available disk space 
-free                      | Display amount of free and used memory in the system 
-du                        | Show how much space each file uses 
-ip addr or ifconfig       | Show ip address on system 
-uname                     | Print system information 
-history                   | Prints .[shell] history for the user 
-man [command]             | Shows the manual for a command 
-shutdown                  | Shuts the system down 
-reboot                    | Reboot the system 
-clear                     | Clear the current buffer of the screen 
-less                      | Will show contents of large file, but will not print everything at once 
-more                      | Opposite of less, does the same thing pretty much, <br/>less features than ***less*** *isn't that ironic* 
-nano or vim               | Text editors within the CLI ****do not ever use vi, <br/>please use vim, you will hate it***
-date                      | Print or set system date and time  
-passwd                    | Change user password 
+Command                     | Description 
+-------                     | -----------
+pwd                         | Prints current path 
+ls                          | Lists directory contents 
+cd                          | Changes directory 
+cat [file]                  | Prints contents of [file] 
+cp [file] [file]            | Copy  ***works with directories*** 
+mv [file] [file]            | Move ***works with directories*** 
+rm [file]                   | Remove ***-r to remove directory*** 
+mkdir [dirname]             | Makes new directory 
+rmdir [dirname]             | Removes directory ***-r for directory with contents*** 
+touch [filename]            | Creates new file 
+ln [source] [destination]   | Creates a shortcut 
+su [user]                   | Switch user   
+sudo [command]              | Run with root privileges 
+logout or exit              | Logout or exit shell 
+head [filename]             | Prints first 10 lines of file by default 
+tail [filename]             | Prints last 10 lines of file by default 
+chmod                       | Can change permissions in filesystem ***see options with man chmod***
+who                         | Shows users logged on 
+md5sum [filename]           | Prints the md5 hash of a file 
+sha1sum [filename]          | Prints the sha1 hash of a file
+find [path] [expression]    | Search for files matching a provided pattern 
+df                          | Display used and available disk space 
+free                        | Display amount of free and used memory in the system 
+du                          | Show how much space each file uses 
+lsblk                       | Show volumes on the system  
+mount                       | View and mount volumes  
+ip addr or ifconfig         | Show ip address on system 
+ip route add|check <route>  | Add a static route to your system, or check a route  
+ip neigh                    | View ARP table  
+uname                       | Print system information 
+history                     | Prints .[shell] history for the user 
+man [command]               | Shows the manual for a command 
+shutdown [-h]               | Shuts the system down 
+reboot                      | Reboot the system 
+clear                       | Clear the current buffer of the screen 
+less                        | Will show contents of large file, but will not print everything at once 
+more                        | Opposite of less, does the same thing pretty much, <br/>less features than ***less*** *isn't that ironic* 
+nano or vim                 | Text editors within the CLI ****do not ever use vi, <br/>please use vim, you will hate it***
+date                        | Print or set system date and time  
+cal                         | View a pretty calendar
+passwd                      | Change user password  
+apropos                     | To see what commands do what you need  
+pwmake <garbage>            | Make a password  
+pwscore                     | Check a password's quality  
+nice -n [niceness] <command>| Change the priority of a command  
+bg                          | Run a process in the background  
+fg                          | Bring a background process to the foreground  
+jobs                        | List background jobs  
+kill <pid>                  | Kill a process  
+pkill <process>             | Kill all related processes
+journalctl -f -u <service>  | Follow the log of a systemd service  
+modprobe                    | Add or remove kernel modules  
+tar -xzvf <file>            | Unzip .tar.gz  
+gunzip <file>               | Unzip .tar.gz  
+xxd <file>                  | Make a hexdump of the file  
+drill <URL>                 | Get information about a domain  
+whois <URL>                 | Get whois information for a domain  
+ss -ltp                     | See list of listening TCP sockets (s/t/u for udp)  
+shred <file>                | Overwrite a file with gibberish  
+mount -t tmpfs -o size=8G tmpfs /mnt | Mount 8G tmpfs in /mnt  
+dd                          | Destroy a disk ;)  
+chattr                      | Change file attributes  
+lsattr                      | List file attributes  
+ln                          | Make a link  
+yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
  
 ## Cheat Sheet
 ### Tab Completion
@@ -64,6 +94,8 @@ passwd                    | Change user password
 ```
 - Shift+PageUp
 - Shift+PageDown
+# TMUX
+- Meta+[  (q to quit)
 ```
 
 ***Note: 'clear' command will get rid of the buffer***
@@ -76,21 +108,24 @@ passwd                    | Change user password
 - CTRL+R (recall last command with characters provided)
 - !! (run last command)
 - !a (run last command with 'a', can be any character provided)
+- echo $? (echo exit code of previous command)
 ```
 
 ### Directories
 ```
 - '.' is current directory
--  '..' is previous directory
+- '..' is parent directory
+- '-' is previous directory
+- '~' is home directory
 ```
 
 ### Keyboard Shorcuts
 #### CTRL+ Commands
 Key       | Description
 --------- | -----------
-C         | kill
+C         | kill (SIGINT)
 L         | clear screen
-D         | logout
+D         | logout (EOF)
 Z         | suspend current foreground process return using fg 'process number'
 S         | stop output to screen
 Q         | resume output
