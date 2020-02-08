@@ -331,8 +331,8 @@ Character | Description
 '+'       | plus operator or option flag for certain commands (enable with plus,disable with '-')
 '%'       | modulo operator
 '-'       | minus in arithmetic operations
-'****'       | multiplication operator
-'**'      | exponential operator
+<code>*</code>       | multiplication operator
+<code>**</code>      | exponential operator
 
 
 
