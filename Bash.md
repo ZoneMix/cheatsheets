@@ -114,15 +114,15 @@ yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
 ### Special Characters
 Character | Description
 --------- | -----------
-'#'       | comment
-\|       | pipe, passes stdout of prev command into stdin of next one
->\|      | force redirection, overwrite existing file
-\|\|      | OR logical operator
+"#"       | comment
+"|"       | pipe, passes stdout of prev command into stdin of next one
+">|"      | force redirection, overwrite existing file
+"||"      | OR logical operator
 &       | Run job in background
 &&      | AND logical operator
--       | prefix, used for command options
--       | suffix, redirection to stdin or stdout
--       | cd -, goes to prev working directory (corresponds with $OLDPWD)
+"-"       | prefix, used for command options
+"-"       | suffix, redirection to stdin or stdout
+"-"       | cd -, goes to prev working directory (corresponds with $OLDPWD)
 --      | prefixes long options to commands
 ~       | home directory (corresponds with $HOME)
 ~+      | current working directory
