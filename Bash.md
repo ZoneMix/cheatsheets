@@ -115,33 +115,33 @@ yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
 Character | Description
 --------- | -----------
 '#'       | comment
-'|'       | pipe, passes stdout of prev command into stdin of next one
-'>|'      | force redirection, overwrite existing file
-'||'      | OR logical operator
-'&'       | Run job in background
-'&&'      | AND logical operator
-'-'       | prefix, used for command options
-'-'       | suffix, redirection to stdin or stdout
-'-'       | cd -, goes to prev working directory (corresponds with $OLDPWD)
-'--'      | prefixes long options to commands
-'~'       | home directory (corresponds with $HOME)
-'~+'      | current working directory
-'~-'      | previous working directory
-';'       | command separator
-';;'      | terminator in switch case option
-'.'       | can be used as the source command
-'.'       | cd . is current directory
-'.'       | . before filename hides file from ls
-'"'       | partial quoting, preserves most of the special chars in a string
+\|       | pipe, passes stdout of prev command into stdin of next one
+>\|      | force redirection, overwrite existing file
+\|\|      | OR logical operator
+&       | Run job in background
+&&      | AND logical operator
+-       | prefix, used for command options
+-       | suffix, redirection to stdin or stdout
+-       | cd -, goes to prev working directory (corresponds with $OLDPWD)
+--      | prefixes long options to commands
+~       | home directory (corresponds with $HOME)
+~+      | current working directory
+~-      | previous working directory
+;       | command separator
+;;      | terminator in switch case option
+.       | can be used as the source command
+.       | cd . is current directory
+.       | . before filename hides file from ls
+"       | partial quoting, preserves most of the special chars in a string
 '         | full quoting, preserves all special chars in a string
-','       | links together arithmetic operations
-'\'       | escape character
-'/'       | filename path separator
-':'       | NULL command, "NOP"
-'!'       | reverse test or exit status
-'!'       | invoke bash history
-'****'       | wild card, matches everything
-'?'       | test condition
+,       | links together arithmetic operations
+\       | escape character
+/       | filename path separator
+:       | NULL command, "NOP"
+!       | reverse test or exit status
+!       | invoke bash history
+\*    | wild card, matches everything
+?       | test condition
 
 
 
