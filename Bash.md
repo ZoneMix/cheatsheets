@@ -114,10 +114,10 @@ yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
 ### Special Characters
 Character | Description
 --------- | -----------
-"#"       | comment
-&#124       | pipe, passes stdout of prev command into stdin of next one
->&#124      | force redirection, overwrite existing file
-&#124&#124      | OR logical operator
+<code>\#</code>       | comment
+<code>\|</code>       | pipe, passes stdout of prev command into stdin of next one
+<code>\>\|</code>      | force redirection, overwrite existing file
+<code>\|\|</code>      | OR logical operator
 &       | Run job in background
 &&      | AND logical operator
 "-"       | prefix, used for command options
@@ -312,7 +312,7 @@ done
   * `cmd` (deprecated)
   * $(cmd)
 
-#Examples
+### Examples
 ```bash
 
 printf "Kernel Version: $(uname -v)\n\n"
