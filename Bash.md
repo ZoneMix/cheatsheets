@@ -111,13 +111,53 @@ yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
 - echo $? (echo exit code of previous command)
 ```
 
-### Directories
-```
-- '.' is current directory
-- '..' is parent directory
-- '-' is previous directory
-- '~' is home directory
-```
+### Special Characters
+Character | Description
+--------- | -----------
+'#'       | comment
+'|'       | pipe, passes stdout of prev command into stdin of next one
+'>|'      | force redirection, overwrite existing file
+'||'      | OR logical operator
+'&'       | Run job in background
+'&&'      | AND logical operator
+'-'       | prefix, used for command options
+'-'       | suffix, redirection to stdin or stdout
+'-'       | cd -, goes to prev working directory (corresponds with $OLDPWD)
+'--'      | prefixes long options to commands
+'~'       | home directory (corresponds with $HOME)
+'~+'      | current working directory
+'~-'      | previous working directory
+';'       | command separator
+';;'      | terminator in switch case option
+'.'       | can be used as the source command
+'.'       | cd . is current directory
+'.'       | . before filename hides file from ls
+'"'       | partial quoting, preserves most of the special chars in a string
+'         | full quoting, preserves all special chars in a string
+','       | links together arithmetic operations
+'\'       | escape character
+'/'       | filename path separator
+':'       | NULL command, "NOP"
+'!'       | reverse test or exit status
+'!'       | invoke bash history
+'****'       | wild card, matches everything
+'?'       | test condition
+
+
+
+### Regular Expressions
+Character | Description
+--------- | -----------
+'{a..d}'  | brace expansion, in this case it will echo 'a b c d', can pad with extra characters too
+'=~'      | regular expression match
+'^'       | beginning of line
+'^,^^'    | first char uppercase
+'^^'      | all chars uppercase
+','       | first char lowercase
+',,'      | all chars lowercase
+'.'       | character match
+'?'       | wildcard, match any character
+
 
 ### Keyboard Shorcuts
 #### CTRL+ Commands
@@ -134,6 +174,7 @@ E or End  | go end of line
 B         | go back one character
 F         | go forward one character
 K         | cuts everything forward of cursor to clipboard
+X         | cuts highlighted text to clipboard
 XX        | move between beginning of line and the current positions
 D         | delete charcter under cursor
 U         | delete everything behind cursor
@@ -145,6 +186,12 @@ N         | next command
 R         | recall last command with characters provided
 O         | Run command you found with R
 G         | leave R
+I         | horizontal tab
+J         | newline or enter
+M         | enter
+O         | newline on cli
+
+
 
 #### ALT+ Commands
 Key | Description
@@ -159,7 +206,38 @@ L   | lowercase word after cursor
 C   | capitalize character on cursor
 R   | revert changes from command if pulled from history
 
-***
+
+## Running Commands
+* command1
+  * run command1
+* command1 && command2
+  * runs if command1 succeeds
+* command1 || command2
+  * runs command2 if command1 fails
+* command1; command2
+  * run command1 then command2
+* command1 | command2
+  * run command1 and pipe output to command2
+
+
+## Useful random things
+```bash
+
+find /[path] -name [filename]                                           #finds every file in path with the name
+find /[path] -name [filename] -exec grep [condition] {};                #finds files that meet condition
+find /[path] -name [filename] -exec grep -A [number] '^[condition]' {}' #finds lines in file that start with specific [condition] and will print [number] lines after where it is true
+find /[path] -name [filename] 2>&1 | grep -v "Permission denied"        #will not print permission denied output, annoying to look at
+
+cat [filename] | cut -d [delimiter] -f [field]                          #finds specific field based on delimiter
+cat [filename] | cut -d [delimiter] -f [field] | grep -v [condition]    #finds field but then will filter out the condition
+
+# for [filename], escape characters are legal
+#     \*.c  will grab all c files, etc.
+
+ls [path]/*.c  #list all c files 
+
+```
+
 <br/>
 
 ## Scripting
@@ -174,25 +252,94 @@ R   | revert changes from command if pulled from history
     * export NAME=value
   
 #### If/Else
-* if [ condition ]; then ... ; fi
-* if [ condition ]; then ... ; else ... ; fi
+
+``` if [ condition ]; then ... ; fi ```
+``` if [ condition ]; then ... ; else ... ; fi ```
   <br/>
-* Conditions
-  * if [ a -eq b ]; then ...
-  * if [ a -ne b ]; then ...
-  * if [ a -lt b ]; then ...
-  * if [ a -gt b ]; then ...
-  * if [ a -le b ]; then ...
-  * if [ a -ge b ]; then ...
+
+##### Conditions
+
+* Numerical Conditions
+```bash
+if [ a -eq b ]; then ...
+if [ a -ne b ]; then ...
+if [ a -lt b ]; then ...
+if [ a -gt b ]; then ...
+if [ a -le b ]; then ...
+if [ a -ge b ]; then ...
+```
+* String Conditions
+```bash
+if [ condition ]
+   && for and
+   || for or
+   == for equal
+   != for not equal
+```
 <br/>
 
 ***Note: Remember spaces before and after condition***
 
 <br/>
 <br/>
+
 #### Loops
-* 
-#### Command Substitution
+```bash
+for VAR in 1 2 3; do ... ; done
+
+
+for VAR in 1 2 3
+do
+	...
+done
+
+while true; do ... ; done
+
+while true
+do
+	...
+done
+
+```
+
+#### Switch/Case
+
+
+## Command Substitution
+* Commands can be run in 'sub-shells'
+* Output will be used in their place, like variables
+* Two ways:
+  * `cmd` (deprecated)
+  * $(cmd)
+
+#Examples
+```bash
+
+printf "Kernel Version: $(uname -v)\n\n"
+printf "Number of users on the machine: $(cat /etc/passwd | wc -l)\n\n"
+printf "   === Accounts === \n$(cut -d ':' -f 1 /etc/passwd)\n\n"
+printf "\nRoot User has ran $(cat /root/.bash_history | wc -l) commands\n\n"
+
+```
+
+## Math
+* $((equation))
+
+Character | Description
+--------- | -----------
+'='       | equals, assignment operator
+'+'       | plus operator or option flag for certain commands (enable with plus,disable with '-')
+'%'       | modulo operator
+'-'       | minus in arithmetic operations
+'****'       | multiplication operator
+'**'      | exponential operator
+
+
+
+```bash
+SUM=$((10 + 20 + 30 + 40))
+echo $SUM
+```
 
 
 
