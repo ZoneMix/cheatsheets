@@ -115,9 +115,9 @@ yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
 Character | Description
 --------- | -----------
 "#"       | comment
-"|"       | pipe, passes stdout of prev command into stdin of next one
-">|"      | force redirection, overwrite existing file
-"||"      | OR logical operator
+`|`       | pipe, passes stdout of prev command into stdin of next one
+`>|`      | force redirection, overwrite existing file
+`||`      | OR logical operator
 &       | Run job in background
 &&      | AND logical operator
 "-"       | prefix, used for command options
