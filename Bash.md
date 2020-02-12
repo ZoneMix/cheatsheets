@@ -82,6 +82,7 @@ chattr                      | Change file attributes
 lsattr                      | List file attributes  
 ln                          | Make a link  
 yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
+rev                         | Reverse a line in place
  
 ## Cheat Sheet
 ### Tab Completion
@@ -115,49 +116,66 @@ yes                         | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...
 Character | Description
 --------- | -----------
 <code>\#</code>       | comment
-<code>\|</code>       | pipe, passes stdout of prev command into stdin of next one
-<code>\>\|</code>      | force redirection, overwrite existing file
+<code>\|</code>       | Pipe, passes stdout of prev command into stdin of next one
+<code>\>\|</code>      | Force redirection, overwrite existing file
 <code>\|\|</code>      | OR logical operator
 &       | Run job in background
 &&      | AND logical operator
-"-"       | prefix, used for command options
-"-"       | suffix, redirection to stdin or stdout
+"-"       | Prefix, used for command options
+"-"       | Suffix, redirection to stdin or stdout
 "-"       | cd -, goes to prev working directory (corresponds with $OLDPWD)
---      | prefixes long options to commands
-~       | home directory (corresponds with $HOME)
-~+      | current working directory
-~-      | previous working directory
-;       | command separator
-;;      | terminator in switch case option
-.       | can be used as the source command
+--      | Prefixes long options to commands
+~       | Home directory (corresponds with $HOME)
+~+      | Current working directory
+~-      | Previous working directory
+;       | Command separator
+;;      | Terminator in switch case option
+.       | Can be used as the source command
 .       | cd . is current directory
 .       | . before filename hides file from ls
-"       | partial quoting, preserves most of the special chars in a string
+"       | Partial quoting, preserves most of the special chars in a string
 '         | full quoting, preserves all special chars in a string
-,       | links together arithmetic operations
-\       | escape character
-/       | filename path separator
+,       | Links together arithmetic operations
+\       | Escape character
+/       | Filename path separator
 :       | NULL command, "NOP"
-!       | reverse test or exit status
-!       | invoke bash history
-\*    | wild card, matches everything
-?       | test condition
+!       | Reverse test or exit status
+!       | Invoke bash history
+\*    | Wild card, matches everything
+?       | Test condition
 
 
 
 ### Regular Expressions
 Character | Description
 --------- | -----------
-'{a..d}'  | brace expansion, in this case it will echo 'a b c d', can pad with extra characters too
-'=~'      | regular expression match
-'^'       | beginning of line
-'^,^^'    | first char uppercase
-'^^'      | all chars uppercase
-','       | first char lowercase
-',,'      | all chars lowercase
-'.'       | character match
-'?'       | wildcard, match any character
+'{a..d}'  | Brace expansion, in this case it will echo 'a b c d', can pad with extra characters too
+'=~'      | Regular expression match
+'^'       | Beginning of line
+'^,^^'    | First char uppercase
+'^^'      | All chars uppercase
+','       | First char lowercase
+',,'      | All chars lowercase
+'.'       | Character match
+'?'       | Wildcard, match any character
 
+### Redirection
+Character | Description
+--------- | -----------
+<code>></code> | Redirect output to file
+<code>>></code> | Append output to file
+<code>>&</code> | Redirect output of one file to another
+<code><</code> | Input file to command
+<code><<</code> | Input to command until condition, like EOF
+<code><<<</code> | Input to command as a string
+
+
+### File Descriptors
+Character | Description
+--------- | -----------
+<code>0</code> | STDIN
+<code>1</code> | STDOUT
+<code>2</code> | STDERR
 
 ### Keyboard Shorcuts
 #### CTRL+ Commands
@@ -309,7 +327,7 @@ done
 * Commands can be run in 'sub-shells'
 * Output will be used in their place, like variables
 * Two ways:
-  * `cmd` (deprecated)
+  * \`cmd\` (deprecated)
   * $(cmd)
 
 ### Examples
@@ -323,7 +341,7 @@ printf "\nRoot User has ran $(cat /root/.bash_history | wc -l) commands\n\n"
 ```
 
 ## Math
-* $((equation))
+$((equation))
 
 Character | Description
 --------- | -----------
